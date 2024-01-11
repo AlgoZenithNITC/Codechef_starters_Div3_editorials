@@ -416,3 +416,191 @@ public class Main {
 }
 ```
 </details>
+
+# Exact Savings
+
+<details>
+<summary>Python</summary>
+  
+```python
+import sys
+
+# Use sys.maxsize for infinity
+INF = sys.maxsize
+
+def min_subset_sum(i, j, x, a, dp):
+    if i == 0:
+        return 0 if j == 0 else INF
+
+    if dp[i][j] != -1:
+        return dp[i][j]
+
+    dp[i][j] = min(min_subset_sum(i - 1, j, x, a, dp),
+                   min_subset_sum(i - 1, (j - a[i - 1]) % x + x) % x, x, a, dp) + a[i - 1])
+    return dp[i][j]
+
+def solve():
+    n, x, z = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    if z % x == 0:
+        print(z // x)
+        return
+
+    dp = [[-1] * x for _ in range(n + 1)]
+    req = z % x
+    result = min_subset_sum(n, x - req, x, a, dp)
+
+    if result == INF:
+        print(-1)
+    else:
+        print((z + result) // x)
+
+t = 1  # Assuming a single test case
+while t > 0:
+    solve()
+    t -= 1
+
+```
+</details>
+
+<details>
+<summary>Cpp</summary>
+
+```cpp
+#include "bits/stdc++.h"
+// the code is entire idea how the dp for better understanding it is presented in top down approach
+// But if it is changed by any value it is giving a TLE
+// Better use top down approch by refering this
+using namespace std;
+
+#define int long long int
+#define double long double
+#define endl '\n'
+
+const int MOD = 1000000007;
+const int inf = 1ll << 60;
+
+vector<vector<int>> dp;
+
+int minSubsetSum(int i, int j, int x, vector<int>& a) {
+    if (i == 0) {
+        return (j == 0) ? 0 : inf;
+        // if the amount we want is cancelling out return zero or return inf
+    }
+
+    if (dp[i][j] != -1) {
+        return dp[i][j];
+    }
+
+    dp[i][j] = min(minSubsetSum(i - 1, j, x, a),
+        minSubsetSum(i - 1, ((j - a[i - 1]) % x + x) % x, x, a) + a[i - 1]);
+    //return the minimum sum such that we will get our remainder
+
+    return dp[i][j];
+}
+
+void solve() {
+    int n, x, z;
+    cin >> n >> x >> z;
+    //z is exact savings he want
+    //x is money he is getting hourly
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    if (z % x == 0) {
+        cout << z / x << endl;
+        return;
+    }
+
+    // initialize dp table with -1
+    dp.assign(n + 1, vector<int>(x, -1));
+
+    int req = z % x;
+    //if he is not getting his exact savings he is getting some extra money(remainder)
+    // we should exhaust the extra money by purchasing some toys so that 
+    // his savings+purchase value is divible by x and is minimum
+    // if savings is not divible by x then z%x is the extra part we had
+    int result = minSubsetSum(n, x - req, x, a);
+    //return some subset sum such that when divided by x it will have remainder rem
+    if (result == inf) {
+        cout << -1 << endl;
+    }
+    else {
+        cout << (z + result) / x << endl;
+    }
+}
+
+int main()
+{
+    int t = 1;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+
+    return 0;
+}
+```
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.*;
+
+public class Main {
+    static final int INF = Integer.MAX_VALUE;
+    static int[][] dp;
+
+    static int minSubsetSum(int i, int j, int x, int[] a) {
+        if (i == 0) {
+            return j == 0 ? 0 : INF;
+        }
+
+        if (dp[i][j] != -1) {
+            return dp[i][j];
+        }
+
+        dp[i][j] = Math.min(minSubsetSum(i - 1, j, x, a),
+                minSubsetSum(i - 1, ((j - a[i - 1]) % x + x) % x, x, a) + a[i - 1]);
+        return dp[i][j];
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = 1;  // Assuming a single test case
+        while (t > 0) {
+            int n = scanner.nextInt();
+            int x = scanner.nextInt();
+            int z = scanner.nextInt();
+            int[] a = new int[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = scanner.nextInt();
+            }
+
+            if (z % x == 0) {
+                System.out.println(z / x);
+                continue;
+            }
+
+            dp = new int[n + 1][x];
+            for (int[] row : dp) {
+                Arrays.fill(row, -1);
+            }
+
+            int req = z % x;
+            int result = minSubsetSum(n, x - req, x, a);
+
+            if (result == INF) {
+                System.out.println(-1);
+            } else {
+                System.out.println((z + result) / x);
+            }
+            t--;
+        }
+    }
+}
+```
+</details>
