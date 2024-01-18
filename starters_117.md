@@ -396,26 +396,40 @@ public class NonPrimePermutation {
 </details>
 
 <!-- Fourth Question -->
-# Chef Product
+# Equality Etiquette
 
 <details>
     <summary>Python</summary>
 
 ```python
-#***for some reasons sqrt function is not working of python users***
-#so use isqrt funtion instead sqrt function which rounds to nearest integer
 import math
 t = int(input())
 for _ in range(t):
-    n = int(input())#set can be only formed by odd numbers as product of odd numbers is always odd
-    if n%2 == 1:#if its odd the number of odd numbers should be odd 
-        ans = int(math.isqrt(n))#nearst odd number whose sum is odd
-        if ans%2 == 0:
-            ans-=1
-        print(((ans-1)//2)+1)
-    if n%2 == 0:#if even number of odd numbers should be even
-        ans = int(math.isqrt(n))
-        print(ans//2)
+    a,b = map(int,input().split())
+    diff = abs(a-b)
+    #base cases
+    if diff == 0:
+        print("0")
+        continue
+    if diff == 1:
+        print("1")
+        continue
+    #approximation of the quadratic equation formula
+    #Binary search can also be used but this is much simpler
+    #diff = n(n+1)/2
+   #  n^2+n-2*diff = 0
+   #  by using the quadratic equation we can approxmiate that n is less that sqrt of 2d
+    n = math.isqrt(2*diff)
+    #the sum should be atleast diff so that we can make two sets which can be equal
+    while n*(n+1)//2<diff:
+        n+=1
+# if difference we want is odd but your sum is even it is not possible to get
+    while (n*(n+1)//2)%2 != diff%2:
+        n+=1
+    print(n)
+#In binary search approach you will find a number such that difference is 
+#less than or equal to sum of numbers till that number and you will adjust
+#the odd even parity just how we adjusted here
 ```
 </details>
 
@@ -429,27 +443,54 @@ for _ in range(t):
 
 using namespace std;
 
+/**
+ * @brief Calculates the minimum number of operations required to make two sets equal.
+ *
+ * @param a The first element in the first set.
+ * @param b The first element in the second set.
+ * @return int The minimum number of operations required.
+ */
+int calculateOperations(int a, int b) {
+    int diff = abs(a - b);
+
+    // Base cases
+    if (diff == 0) {
+        return 0;
+    }
+    if (diff == 1) {
+        return 1;
+    }
+
+    // Approximate the value of n using the quadratic formula
+    int n = (int)sqrt(2 * diff);  // Note: cmath::isqrt not available in C++
+
+    // Ensure the sum is at least equal to the difference
+    while (n * (n + 1) / 2 < diff) {
+        n++;
+    }
+
+    // Adjust for odd/even parity if necessary
+    while ((n * (n + 1) / 2) % 2 != diff % 2) {
+        n++;
+    }
+
+    return n;
+}
+
 int main() {
     int t;
     cin >> t;
 
-    for (int _ = 0; _ < t; _++) {
-        int n;
-        cin >> n;
-
-        if (n % 2 == 1) {
-            int ans = int(sqrt(n));  // Use sqrt for nearest integer rounding in C++
-            if (ans % 2 == 0) {
-                ans--;
-            }
-            cout << ((ans - 1) / 2 + 1) << endl;
-        } else {
-            int ans = int(sqrt(n));
-            cout << ans / 2 << endl;
-        }
+    for (int i = 0; i < t; i++) {
+        int a, b;
+        cin >> a >> b;
+        int result = calculateOperations(a, b);
+        cout << result << endl;
     }
 
     return 0;
+}
+
 }
 ```
 </details>
@@ -461,71 +502,74 @@ int main() {
 ```java
 import java.util.Scanner;
 
-public class Main {
+public class EqualSets {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int t = scanner.nextInt();
+
         for (int i = 0; i < t; i++) {
-            int n = scanner.nextInt();
-            int k = scanner.nextInt();
-            int K = Math.min(n, k - 1);
-            if (K == 0) {
-                System.out.println(K);
-                continue;
-            }
-            int a = (n - K) % k;
-            int b = (K / 2) + (K % 2);
-            System.out.println(b + a / 2);
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            int result = calculateOperations(a, b);
+            System.out.println(result);
         }
+    }
+
+    public static int calculateOperations(int a, int b) {
+        int diff = Math.abs(a - b);
+
+        // Base cases
+        if (diff == 0) {
+            return 0;
+        }
+        if (diff == 1) {
+            return 1;
+        }
+
+        // Approximate the value of n using the quadratic formula
+        int n = (int)Math.sqrt(2 * diff);
+
+        // Ensure the sum is at least equal to the difference
+        while (n * (n + 1) / 2 < diff) {
+            n++;
+        }
+
+        // Adjust for odd/even parity if necessary
+        while ((n * (n + 1) / 2) % 2 != diff % 2) {
+            n++;
+        }
+
+        return n;
     }
 }
 ```
 </details>
 
-# Exact Savings
+<!-- Fifth Question -->
+# Spread Spree
 
 <details>
 <summary>Python</summary>
   
 ```python
-import sys
-
-# Use sys.maxsize for infinity
-INF = sys.maxsize
-
-def min_subset_sum(i, j, x, a, dp):
-    if i == 0:
-        return 0 if j == 0 else INF
-
-    if dp[i][j] != -1:
-        return dp[i][j]
-
-    dp[i][j] = min(min_subset_sum(i - 1, j, x, a, dp),
-                   min_subset_sum(i - 1, (j - a[i - 1]) % x + x) % x, x, a, dp) + a[i - 1])
-    return dp[i][j]
-
-def solve():
-    n, x, z = map(int, input().split())
-    a = list(map(int, input().split()))
-
-    if z % x == 0:
-        print(z // x)
-        return
-
-    dp = [[-1] * x for _ in range(n + 1)]
-    req = z % x
-    result = min_subset_sum(n, x - req, x, a, dp)
-
-    if result == INF:
-        print(-1)
+t = int(input())
+for i in range(t):
+    n, m = map(int, input().split())
+    if n > m:
+        n, m = m, n
+    MOD = 998244353 #given in the question
+    time = m // 2 
+    l = max(1, n - time)
+    r = min(n, 1 + time)
+    ans = (r * (r + 1) // 2) - ((l - 1) * l // 2)#sum of values from r to l
+    ans = ans % MOD
+    
+    if m % 2 == 1:
+        ans = (ans * (m + 1) // 2) % MOD#multiplying values of j as discussed in the idea
     else:
-        print((z + result) // x)
-
-t = 1  # Assuming a single test case
-while t > 0:
-    solve()
-    t -= 1
-
+        ans = (ans * (m + 1)) % MOD
+    
+    print(ans)
 ```
 </details>
 
@@ -533,75 +577,47 @@ while t > 0:
 <summary>Cpp</summary>
 
 ```cpp
-#include "bits/stdc++.h"
-// the code is entire idea how the dp for better understanding it is presented in top down approach
-// But if it is changed by any value it is giving a TLE
-// Better use top down approch by refering this
+#include <iostream>
+
 using namespace std;
 
-#define int long long int
-#define double long double
-#define endl '\n'
-
-const int MOD = 1000000007;
-const int inf = 1ll << 60;
-
-vector<vector<int>> dp;
-
-int minSubsetSum(int i, int j, int x, vector<int>& a) {
-    if (i == 0) {
-        return (j == 0) ? 0 : inf;
-        // if the amount we want is cancelling out return zero or return inf
+/**
+ * @brief Calculates the answer for the given problem.
+ *
+ * @param n The first input value.
+ * @param m The second input value.
+ * @return int The calculated answer.
+ */
+int calculateAnswer(int n, int m) {
+    if (n > m) {
+        swap(n, m);
     }
 
-    if (dp[i][j] != -1) {
-        return dp[i][j];
+    const int MOD = 998244353;
+    int time = m / 2;
+    int l = max(1, n - time);
+    int r = min(n, 1 + time);
+    int ans = (r * (r + 1) / 2) - ((l - 1) * l / 2);
+    ans %= MOD;
+
+    if (m % 2 == 1) {
+        ans = (ans * (m + 1) / 2) % MOD;
+    } else {
+        ans = (ans * (m + 1)) % MOD;
     }
 
-    dp[i][j] = min(minSubsetSum(i - 1, j, x, a),
-        minSubsetSum(i - 1, ((j - a[i - 1]) % x + x) % x, x, a) + a[i - 1]);
-    //return the minimum sum such that we will get our remainder
-
-    return dp[i][j];
+    return ans;
 }
 
-void solve() {
-    int n, x, z;
-    cin >> n >> x >> z;
-    //z is exact savings he want
-    //x is money he is getting hourly
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
-
-    if (z % x == 0) {
-        cout << z / x << endl;
-        return;
-    }
-
-    // initialize dp table with -1
-    dp.assign(n + 1, vector<int>(x, -1));
-
-    int req = z % x;
-    //if he is not getting his exact savings he is getting some extra money(remainder)
-    // we should exhaust the extra money by purchasing some toys so that 
-    // his savings+purchase value is divible by x and is minimum
-    // if savings is not divible by x then z%x is the extra part we had
-    int result = minSubsetSum(n, x - req, x, a);
-    //return some subset sum such that when divided by x it will have remainder rem
-    if (result == inf) {
-        cout << -1 << endl;
-    }
-    else {
-        cout << (z + result) / x << endl;
-    }
-}
-
-int main()
-{
-    int t = 1;
+int main() {
+    int t;
     cin >> t;
-    while (t--) {
-        solve();
+
+    for (int i = 0; i < t; i++) {
+        int n, m;
+        cin >> n >> m;
+        int result = calculateAnswer(n, m);
+        cout << result << endl;
     }
 
     return 0;
@@ -613,58 +629,42 @@ int main()
 <summary>Java</summary>
 
 ```java
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-    static final int INF = Integer.MAX_VALUE;
-    static int[][] dp;
-
-    static int minSubsetSum(int i, int j, int x, int[] a) {
-        if (i == 0) {
-            return j == 0 ? 0 : INF;
-        }
-
-        if (dp[i][j] != -1) {
-            return dp[i][j];
-        }
-
-        dp[i][j] = Math.min(minSubsetSum(i - 1, j, x, a),
-                minSubsetSum(i - 1, ((j - a[i - 1]) % x + x) % x, x, a) + a[i - 1]);
-        return dp[i][j];
-    }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int t = 1;  // Assuming a single test case
-        while (t > 0) {
+        int t = scanner.nextInt();
+
+        for (int i = 0; i < t; i++) {
             int n = scanner.nextInt();
-            int x = scanner.nextInt();
-            int z = scanner.nextInt();
-            int[] a = new int[n];
-            for (int i = 0; i < n; i++) {
-                a[i] = scanner.nextInt();
-            }
-
-            if (z % x == 0) {
-                System.out.println(z / x);
-                continue;
-            }
-
-            dp = new int[n + 1][x];
-            for (int[] row : dp) {
-                Arrays.fill(row, -1);
-            }
-
-            int req = z % x;
-            int result = minSubsetSum(n, x - req, x, a);
-
-            if (result == INF) {
-                System.out.println(-1);
-            } else {
-                System.out.println((z + result) / x);
-            }
-            t--;
+            int m = scanner.nextInt();
+            int result = calculateAnswer(n, m);
+            System.out.println(result);
         }
+    }
+
+    public static int calculateAnswer(int n, int m) {
+        if (n > m) {
+            int temp = n;
+            n = m;
+            m = temp;
+        }
+
+        final int MOD = 998244353;
+        int time = m / 2;
+        int l = Math.max(1, n - time);
+        int r = Math.min(n, 1 + time);
+        int ans = (r * (r + 1) / 2) - ((l - 1) * l / 2);
+        ans %= MOD;
+
+        if (m % 2 == 1) {
+            ans = (ans * (m + 1) / 2) % MOD;
+        } else {
+            ans = (ans * (m + 1)) % MOD;
+        }
+
+        return ans;
     }
 }
 ```
