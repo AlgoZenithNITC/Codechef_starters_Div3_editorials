@@ -646,7 +646,6 @@ public class Main {
 
     public static int calculateAnswer(int n, int m) {
         if (n > m) {
-            int temp = n;
             n = m;
             m = temp;
         }
