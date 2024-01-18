@@ -1,7 +1,7 @@
 # Codechef_starters_117_Div3
 
 <!-- First Question -->
-# Hattrick
+# Weapon Choice
 <details>
 <summary>Python</summary>
 
