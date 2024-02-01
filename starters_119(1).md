@@ -340,8 +340,7 @@ public class Main {
 # K odd sum
 
 <details>
-
-    <summary>Python</summary>
+<summary>Python</summary>
 
 ```python
 t = int(input())
