@@ -431,8 +431,7 @@ int main() {
 </details>
 
 <details>
-
-	<summary>JAVA</summary>
+<summary>JAVA</summary>
 
   
 
