@@ -1,8 +1,13 @@
-//codechef_starters_120_div3
+# Codechef_starters_119_Div3
 
-//QUESTION 1 : Valentine Gifts
+<!-- First Question -->
 
-//C++ CODE
+# Valentine Gifts
+
+<details>
+<summary>Cpp</summary>
+
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -20,8 +25,14 @@ int main() {
 	}
 	return 0;
 }
+```
 
-//JAVA CODE
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
 import java.util.Scanner;
 
 public class Main {
@@ -39,9 +50,13 @@ public class Main {
         scanner.close();
     }
 }
+```
+</details>
 
+<details>
+<summary>Python</summary>
 
-//PYTHON CODE
+```python
 import sys
 t = int(input())
 
@@ -51,11 +66,15 @@ for _ in range(t):
         print("YES")
     else:
         print("NO")
+```
+</details>
 
+# Largest K
 
-//QUESTION 2 : Largest K
+<details>
+<summary>Cpp</summary>
 
-//C++ CODE
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -71,8 +90,13 @@ int main() {
     }
     return 0;
 }
+```
+</details>
 
-//JAVA CODE
+<details>
+<summary>Java</summary>
+
+```java
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -87,21 +111,32 @@ public class Main {
         scanner.close();
     }
 }
+```
+</details>
 
-//PYTHON CODE
+
+<details>
+<summary>Python</summary>
+
+```python
 import sys
 t = int(input())
 for _ in range(t):
     x, y = map(int, input().split())
     k = y // (x - 1)
     print(k)
+```
+</details>
 
 
 
 
-//QUESTION 3:Sub or Swp
+# Sub or Swp
 
-//C++ CODE
+<details>
+<summary>Cpp</summary>
+
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -116,8 +151,13 @@ int main() {
     }
     return 0;
 }
+```
+</details>
 
-//JAVA CODE
+<details>
+<summary>Java</summary>
+
+```java
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -140,20 +180,29 @@ public class Main {
         return x;
     }
 }
+```
+</details>
 
+<details>
+<summary>Python</summary>
 
-//PYTHON CODE
+```python
 from math import gcd
 
 t = int(input())
 for _ in range(t):
     x, y = map(int, input().split())
     print(gcd(x, y))
+```
+</details>
 
 
-//QUESTION 4:Count Subarrays
+# Count Subarrays
 
-//C++ CODE
+<details>
+<summary>Cpp</summary>
+
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -188,8 +237,13 @@ int main() {
 	}
     return 0;
 }
+```
+</details>
 
-//JAVA CODE
+<details>
+<summary>Java</summary>
+
+```java
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -227,8 +281,13 @@ public class Main {
         scanner.close();
     }
 }
+```
+</details>
 
-//PYTHON CODE
+<details>
+<summary>Python</summary>
+
+```python
 # Importing the required library for taking input
 from collections import deque
 
@@ -258,11 +317,15 @@ def process_test_cases(t):
 # Taking the number of test cases as input
 t = int(input())
 process_test_cases(t)
+```
+</details>
 
+# Find Permutation
+<details>
+<summary>Cpp</summary>
 
-//QUESTION 5:Find Permutation
+```cpp
 
-//C++ CODE
 #include <iostream>
 #include <vector>
 #include <unordered_set>
@@ -303,8 +366,14 @@ int main() {
     }
     return 0;
 }
+```
+</details>
 
-//java code
+
+<details>
+<summary>Java</summary>
+
+```java
 import java.util.Scanner;
 import java.util.LinkedHashSet;
 import java.util.ArrayList;
@@ -348,9 +417,13 @@ public class Main {
         scanner.close();
     }
 }
+```
+</details>
 
+<details>
+<summary>Python</summary>
 
-//python code
+```python
 def find_permutation(N, A):
     # Initialize an empty set to keep track of elements added to the permutation
     added = set()
@@ -376,4 +449,5 @@ for _ in range(T):
     A = list(map(int, input().strip().split()))  # Array A
     permutation = find_permutation(N, A)
     print(' '.join(map(str, permutation)))
-
+```
+</details>
