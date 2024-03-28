@@ -100,13 +100,25 @@ public class Solution {
 
 </details>
 
-## Question - 2
+## 2. Superincreasing
 
 <details>
 <summary>Python</summary>
 
 ```python
+def solve():
+    """
+    This function checks if a number x is greater than or equal to 2^(k-1).
+    """
+    n, k, x = map(int, input().split())
+    threshold = 2**(k-1)
+    result = "Yes" if x >= threshold else "No"
+    print(result)
 
+# Driver Code
+t = int(input())
+for _ in range(t):
+    solve()
 ```
 
 </details>
@@ -115,7 +127,42 @@ public class Solution {
 <summary>Cpp</summary>
 
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
 
+/**
+ * @brief helper function to solve
+ *        an individual test case
+ */
+void solve() {
+    long long n, k, x;
+    
+    cin >> n >> k >> x;
+
+    if (x >= pow(2, k - 1))
+        cout << "Yes" << endl;
+    else
+        cout << "No" << endl;
+}
+
+/**
+ * @brief Driver Code
+ * 
+ * @return int 
+ */
+int main() {
+	// your code goes here
+
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        solve();
+    }
+    
+    return 0;
+}
 ```
 
 </details>
@@ -124,6 +171,30 @@ public class Solution {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void solve() {
+        Scanner scanner = new Scanner(System.in);
+        long n = scanner.nextLong();
+        int k = scanner.nextInt();
+        long x = scanner.nextLong();
+
+        long threshold = (long) Math.pow(2, k - 1);
+        String result = (x >= threshold) ? "Yes" : "No";
+        System.out.println(result);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+
+        for (int i = 0; i < t; i++) {
+            solve();
+        }
+    }
+}
 
 ```
 
