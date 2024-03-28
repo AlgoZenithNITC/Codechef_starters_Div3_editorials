@@ -1,10 +1,25 @@
-## Question - 1
+## 1. Extreme Basketball
 
 <details>
 <summary>Python</summary>
 
 ```python
+import math
 
+def solve():
+    """
+    This function solves an individual test case by calculating the difference
+    between b + 10 and a, and then taking the ceiling of the division by 3.0.
+    """
+    a, b = map(int, input().split())
+    dif = b + 10 - a
+    result = math.ceil(dif / 3.0) if dif > 0 else 0
+    print(result)
+
+# Driver Code
+t = int(input())
+for _ in range(t):
+    solve()
 ```
 
 </details>
@@ -13,7 +28,43 @@
 <summary>Cpp</summary>
 
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
 
+/**
+ * @brief helper function to solve
+ *        an individual test case
+ */
+void solve() {
+    int a, b;
+    cin >> a >> b;
+    
+    int dif = b + 10 - a;
+    
+    if (dif < 0)
+        cout << 0 << endl;
+    else
+        cout << ceil(dif / 3.0) << endl;
+}
+
+/**
+ * @brief Driver Code
+ * 
+ * @return int 
+ */
+int main() {
+	// your code goes here
+
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        solve();
+    }
+    
+    return 0;
+}
 ```
 
 </details>
@@ -22,18 +73,52 @@
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
 
+public class Solution {
+
+    public static void solve() {
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+
+        int dif = b + 10 - a;
+        int result = (dif > 0) ? (int) Math.ceil(dif / 3.0) : 0;
+        System.out.println(result);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+
+        for (int i = 0; i < t; i++) {
+            solve();
+        }
+    }
+}
 ```
 
 </details>
 
-## Question - 2
+## 2. Superincreasing
 
 <details>
 <summary>Python</summary>
 
 ```python
+def solve():
+    """
+    This function checks if a number x is greater than or equal to 2^(k-1).
+    """
+    n, k, x = map(int, input().split())
+    threshold = 2**(k-1)
+    result = "Yes" if x >= threshold else "No"
+    print(result)
 
+# Driver Code
+t = int(input())
+for _ in range(t):
+    solve()
 ```
 
 </details>
@@ -42,7 +127,42 @@
 <summary>Cpp</summary>
 
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
 
+/**
+ * @brief helper function to solve
+ *        an individual test case
+ */
+void solve() {
+    long long n, k, x;
+    
+    cin >> n >> k >> x;
+
+    if (x >= pow(2, k - 1))
+        cout << "Yes" << endl;
+    else
+        cout << "No" << endl;
+}
+
+/**
+ * @brief Driver Code
+ * 
+ * @return int 
+ */
+int main() {
+	// your code goes here
+
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        solve();
+    }
+    
+    return 0;
+}
 ```
 
 </details>
@@ -51,6 +171,30 @@
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void solve() {
+        Scanner scanner = new Scanner(System.in);
+        long n = scanner.nextLong();
+        int k = scanner.nextInt();
+        long x = scanner.nextLong();
+
+        long threshold = (long) Math.pow(2, k - 1);
+        String result = (x >= threshold) ? "Yes" : "No";
+        System.out.println(result);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+
+        for (int i = 0; i < t; i++) {
+            solve();
+        }
+    }
+}
 
 ```
 
