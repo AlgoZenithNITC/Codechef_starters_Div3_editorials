@@ -1,4 +1,4 @@
-# Codechef_starters_116_Div3
+# starters116 Div3
 
 # Hattrick
 <details>
