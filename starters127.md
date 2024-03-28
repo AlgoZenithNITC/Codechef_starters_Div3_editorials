@@ -56,7 +56,7 @@
 
 </details>
 
-## Question - 3
+## 3. Anti-Triangle
 
 <details>
 <summary>Python</summary>
@@ -85,7 +85,7 @@
 
 </details>
 
-## Question - 4
+## 4. ABC Conjecture
 
 <details>
 <summary>Python</summary>
