@@ -56,7 +56,7 @@
 
 </details>
 
-## Question - 3
+## 3. Sum of Modes
 
 <details>
 <summary>Python</summary>
