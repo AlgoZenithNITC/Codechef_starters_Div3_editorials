@@ -1,10 +1,46 @@
-## Question - 1
+## 1. Even Sum Subarray
 
 <details>
 <summary>Python</summary>
 
 ```python
+def solve():
+    """
+    Solves a single test case for finding the maximum length subarray with even sum.
 
+    Reads input for array size, array elements, and calculates the length of the
+    maximum subarray with even sum.
+    """
+    n = int(input())
+    a = [int(x) for x in input().split()]
+    sum = sum(a)
+
+    l, r = 0, n - 1
+    left_sum, right_sum = sum, sum
+
+    # Find closest odd element from right
+    while left_sum % 2 != 0 and r >= 0:
+        left_sum -= a[r]
+        r -= 1
+
+    # Find closest odd element from left
+    while right_sum % 2 != 0 and l < n:
+        right_sum -= a[l]
+        l += 1
+
+    # Print the length of the maximum subarray with even sum
+    print(max(r + 1, n - l))
+
+def main():
+    """
+    Driver function to read the number of test cases and call solve for each.
+    """
+    t = int(input())
+    for _ in range(t):
+        solve()
+
+if __name__ == "__main__":
+    main()
 ```
 
 </details>
@@ -13,7 +49,56 @@
 <summary>Cpp</summary>
 
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
 
+/**
+ * @brief helper function to solve
+ *        an individual test case
+ */
+void solve() {
+    int n;
+    
+    cin >> n;
+    
+    int a[n], sum = 0;
+    
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        sum += a[i];
+    }
+    
+    int l, r, leftSum = sum, rightSum = sum;
+    
+    for (r = n - 1; leftSum % 2; r--) {
+        leftSum -= a[r];
+    }
+    
+    for (l = 0; rightSum % 2; l++) {
+        rightSum -= a[l];
+    }
+    
+    cout << max(r + 1, n - l) << endl;
+}
+
+/**
+ * @brief Driver Code
+ * 
+ * @return int 
+ */
+int main() {
+	// your code goes here
+
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        solve();
+    }
+    
+    return 0;
+}
 ```
 
 </details>
@@ -22,7 +107,51 @@
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
 
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            solve(sc);
+        }
+
+        sc.close();
+    }
+
+    public static void solve(Scanner sc) {
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+            sum += a[i];
+        }
+
+        int l = 0, r = n - 1;
+        int leftSum = sum, rightSum = sum;
+
+        // Find closest odd element from right
+        while (leftSum % 2 != 0 && r >= 0) {
+            leftSum -= a[r];
+            r--;
+        }
+
+        // Find closest odd element from left
+        while (rightSum % 2 != 0 && l < n) {
+            rightSum -= a[l];
+            l++;
+        }
+
+        // Output the length of the maximum subarray with even sum
+        System.out.println(Math.max(r + 1, n - l));
+    }
+};
 ```
 
 </details>
