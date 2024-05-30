@@ -160,13 +160,27 @@ public class Main {
 
 </details>
 
-## Question - 4
+## 4. Sum of Max K Subarray
 
 <details>
 <summary>Python</summary>
 
 ```python
-
+mod = (10**9)+7
+fac = [0]*(10**6)
+fac[0] = 1
+for i in range(1,10**6):
+    fac[i] = (fac[i-1]*i)%mod
+for _ in range(int(input())):
+    n = int(input())
+    for i in range(1,n+1):
+        temp = n//i
+        rem = n%i
+        ans = (fac[temp]*fac[n-temp])%mod
+        ans = (ans*(i-rem))%mod
+        print(ans,end = ' ')
+    print()
+       
 ```
 
 </details>
@@ -175,6 +189,42 @@ public class Main {
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+#include <vector>
+#define MOD 1000000007
+#define MAX 1000000
+
+using namespace std;
+
+vector<long long> fac(MAX);
+
+void precompute_factorials() {
+    fac[0] = 1;
+    for (int i = 1; i < MAX; i++) {
+        fac[i] = (fac[i - 1] * i) % MOD;
+    }
+}
+
+int main() {
+    precompute_factorials();
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        for (int i = 1; i <= n; i++) {
+            int temp = n / i;
+            int rem = n % i;
+            long long ans = (fac[temp] * fac[n - temp]) % MOD;
+            ans = (ans * (i - rem)) % MOD;
+            cout << ans << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
 
 ```
 
@@ -184,6 +234,37 @@ public class Main {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+
+public class Main {
+    static final int MOD = (int) (1e9 + 7);
+    static final int MAX = (int) (1e6);
+    static long[] fac = new long[MAX];
+
+    static {
+        fac[0] = 1;
+        for (int i = 1; i < MAX; i++) {
+            fac[i] = (fac[i - 1] * i) % MOD;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- > 0) {
+            int n = scanner.nextInt();
+            for (int i = 1; i <= n; i++) {
+                int temp = n / i;
+                int rem = n % i;
+                long ans = (fac[temp] * fac[n - temp]) % MOD;
+                ans = (ans * (i - rem)) % MOD;
+                System.out.print(ans + " ");
+            }
+            System.out.println();
+        }
+        scanner.close();
+    }
+}
 
 ```
 
