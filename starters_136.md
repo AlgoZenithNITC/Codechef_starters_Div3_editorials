@@ -66,7 +66,7 @@ from collections import defaultdict
 for _ in range(int(input())):
     n = int(input())
     s = input()
-    ans = (n*(n+1))//2 # as every subarray will have 1 contribution
+    ans = (n*(n+1))//2 # as every substring will have 1 contribution
     total = 0
     d = defaultdict(int)
     d[0] = 1
