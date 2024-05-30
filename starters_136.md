@@ -156,13 +156,39 @@ public class Solution {
 
 </details>
 
-## Question - 2
+## 2. My First Geometry Problem
 
 <details>
 <summary>Python</summary>
 
 ```python
+def main():
+    """
+    Reads the number of test cases, processes each case, and prints the answer.
+    """
+    t = int(input())
 
+    for _ in range(t):
+        s = input()  # Read entire line for string input
+        count_ones = 0
+        for char in s:
+            if char == '1':
+                count_ones += 1
+
+        if count_ones == 1:
+            print(11)
+        elif count_ones == 2:
+            if (s[0] == '1' and s[1] == '1') or (s[2] == '1' and s[3] == '1'):
+                print(21)
+            else:
+                print(121)
+        elif count_ones == 3:
+            print(231)
+        else:
+            print(441)
+
+if __name__ == "__main__":
+    main()
 ```
 
 </details>
@@ -171,7 +197,42 @@ public class Solution {
 <summary>Cpp</summary>
 
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
 
+int main() {
+	int t;
+	cin >> t;
+	while(t--){
+	    string s;
+	    cin >> s;
+	    
+	    int onecount = 0;
+	    
+	    for(int i = 0;i<4;i++){
+	        if(s[i]=='1')onecount++;
+	    }
+	    
+	    if(onecount == 1){
+	        cout << 11 << endl;
+	    }
+	    else if(onecount == 2){
+	        if((s[0] == '1' && s[1] == '1') || (s[2] == '1' && s[3] == '1')){
+	            cout << 21 << endl;
+	        }
+	        else{
+	            cout << 121 << endl;
+	        }
+	    }
+	    else if(onecount == 3){
+	        cout << 231 << endl;
+	    }
+	    else{
+	        cout << 441 << endl;
+	    }
+	}
+
+}
 ```
 
 </details>
@@ -180,7 +241,43 @@ public class Solution {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
 
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        while (t-- > 0) {
+            String s = sc.nextLine(); // Read entire line for string input
+
+            int countOnes = 0;
+            for (int i = 0; i < 4; i++) {
+                if (s.charAt(i) == '1') {
+                    countOnes++;
+                }
+            }
+
+            if (countOnes == 1) {
+                System.out.println(11);
+            } else if (countOnes == 2) {
+                if ((s.charAt(0) == '1' && s.charAt(1) == '1') || (s.charAt(2) == '1' && s.charAt(3) == '1')) {
+                    System.out.println(21);
+                } else {
+                    System.out.println(121);
+                }
+            } else if (countOnes == 3) {
+                System.out.println(231);
+            } else {
+                System.out.println(441);
+            }
+        }
+
+        sc.close();
+    }
+}
 ```
 
 </details>
