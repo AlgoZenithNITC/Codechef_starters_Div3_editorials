@@ -1,10 +1,20 @@
-## Question - 1
+## 1. Spell Splice
 
 <details>
 <summary>Python</summary>
 
 ```python
-
+for _ in range(int(input())):
+    n = int(input())
+    l = []
+    for i in range(n):
+        a,b = map(int,input().split())
+        l.append((a,b))
+    ans = 0
+    for i in range(n):
+        for j in range(i+1,n):
+            ans = max(ans,l[i][1]*l[j][0]+l[j][1]*l[i][0])
+    print(ans)
 ```
 
 </details>
@@ -13,6 +23,34 @@
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        vector<pair<int, int>> l(n);
+        for (int i = 0; i < n; ++i) {
+            int a, b;
+            cin >> a >> b;
+            l[i] = make_pair(a, b);
+        }
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                ans = max(ans, l[i].second * l[j].first + l[j].second * l[i].first);
+            }
+        }
+        cout << ans << endl;
+    }
+    return 0;
+}
 
 ```
 
@@ -22,6 +60,30 @@
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- > 0) {
+            int n = scanner.nextInt();
+            int[][] l = new int[n][2];
+            for (int i = 0; i < n; i++) {
+                l[i][0] = scanner.nextInt();
+                l[i][1] = scanner.nextInt();
+            }
+            int ans = 0;
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    ans = Math.max(ans, l[i][1] * l[j][0] + l[j][1] * l[i][0]);
+                }
+            }
+            System.out.println(ans);
+        }
+        scanner.close();
+    }
+}
 
 ```
 
