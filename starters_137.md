@@ -89,13 +89,28 @@ public class Main {
 
 </details>
 
-## Question - 2
+## 2. Large Differences
 
 <details>
 <summary>Python</summary>
 
 ```python
-
+for _ in range(int(input())):
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    ans = 0
+    def f(ind,num):
+        res = 0
+        for i in range(1,n):
+            temp1 = a[i] if i != ind else num
+            temp2 = a[i-1] if i-1 != ind else num
+            res+=abs(temp1-temp2)
+        return res
+        
+    for i in range(n):
+        ans = max(ans,f(i,1))
+        ans = max(ans,f(i,k))
+    print(ans)
 ```
 
 </details>
@@ -104,6 +119,42 @@ public class Main {
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+int f(const vector<int>& a, int n, int ind, int num) {
+    int res = 0;
+    for (int i = 1; i < n; ++i) {
+        int temp1 = (i != ind) ? a[i] : num;
+        int temp2 = (i - 1 != ind) ? a[i - 1] : num;
+        res += abs(temp1 - temp2);
+    }
+    return res;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
+        vector<int> a(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> a[i];
+        }
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            ans = max(ans, f(a, n, i, 1));
+            ans = max(ans, f(a, n, i, k));
+        }
+        cout << ans << endl;
+    }
+    return 0;
+}
 
 ```
 
@@ -113,6 +164,39 @@ public class Main {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+
+public class Solution {
+    public static int f(int[] a, int n, int ind, int num) {
+        int res = 0;
+        for (int i = 1; i < n; i++) {
+            int temp1 = (i != ind) ? a[i] : num;
+            int temp2 = (i - 1 != ind) ? a[i - 1] : num;
+            res += Math.abs(temp1 - temp2);
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- > 0) {
+            int n = scanner.nextInt();
+            int k = scanner.nextInt();
+            int[] a = new int[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = scanner.nextInt();
+            }
+            int ans = 0;
+            for (int i = 0; i < n; i++) {
+                ans = Math.max(ans, f(a, n, i, 1));
+                ans = Math.max(ans, f(a, n, i, k));
+            }
+            System.out.println(ans);
+        }
+        scanner.close();
+    }
+}
 
 ```
 
