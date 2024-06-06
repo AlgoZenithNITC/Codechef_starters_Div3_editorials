@@ -386,12 +386,59 @@ public class Solution {
 
 </details>
 
-## Question - 4
+## 4. Speedrun
 
 <details>
 <summary>Python</summary>
 
 ```python
+def solve(n, k):
+    a = list(map(int, input().split()))
+    h = list(map(int, input().split()))
+
+    # Check where the cumulative sum of h exceeds a
+    ind = -1
+    prev = 0
+    for i in range(n):
+        prev += h[i]
+        if prev > a[i]:
+            ind = i
+            break
+
+    # If no such index exists, return True
+    if ind == -1:
+        return True
+
+    # Find the range to reset health
+    ind2 = n - 1
+    for i in range(ind, n):
+        if a[i] - a[ind] > 2 * k:
+            ind2 = i - 1
+            break
+
+    # Reset health in 2*k range
+    for i in range(ind2,-1,-1):
+        if a[ind2]-a[i] > 2*k:
+            break
+        h[i] = 0
+
+    # Check again after reset
+    prev = 0
+    for i in range(n):
+        prev += h[i]
+        if prev > a[i]:
+            return False
+
+    return True
+
+# Read input and solve for each test case
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    if solve(n, k):
+        print('YES')
+    else:
+        print('NO')
+
 
 ```
 
@@ -401,6 +448,85 @@ public class Solution {
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+bool solve(int n, int k) {
+    vector<int> a(n), h(n);
+
+    // Input a and h
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+    for (int i = 0; i < n; ++i) {
+        cin >> h[i];
+    }
+
+    // Check where the cumulative sum of h exceeds a
+    int ind = -1, prev = 0;
+    for (int i = 0; i < n; ++i) {
+        prev += h[i];
+        if (prev > a[i]) {
+            ind = i;
+            break;
+        }
+    }
+
+    // If no such index exists, return true
+    if (ind == -1) {
+        return true;
+    }
+
+    // Find the range to reset health
+    int ind2 = n - 1;
+    for (int i = ind; i < n; ++i) {
+        if (a[i] - a[ind] > 2 * k) {
+            ind2 = i - 1;
+            break;
+        }
+    }
+
+    // Reset health in 2*k range
+    for (int i = ind2; i >= 0; --i) {
+        if (a[ind2] - a[i] > 2 * k) {
+            break;
+        }
+        h[i] = 0;
+    }
+
+    // Check again after reset
+    prev = 0;
+    for (int i = 0; i < n; ++i) {
+        prev += h[i];
+        if (prev > a[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
+        if (solve(n, k)) {
+            cout << "YES\n";
+        } else {
+            cout << "NO\n";
+        }
+    }
+
+    return 0;
+}
 
 ```
 
@@ -410,6 +536,77 @@ public class Solution {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+
+public class Main {
+    public static boolean solve(int n, int k, int[] a, int[] h) {
+        // Check where the cumulative sum of h exceeds a
+        int ind = -1, prev = 0;
+        for (int i = 0; i < n; ++i) {
+            prev += h[i];
+            if (prev > a[i]) {
+                ind = i;
+                break;
+            }
+        }
+
+        // If no such index exists, return true
+        if (ind == -1) {
+            return true;
+        }
+
+        // Find the range to reset health
+        int ind2 = n - 1;
+        for (int i = ind; i < n; ++i) {
+            if (a[i] - a[ind] > 2 * k) {
+                ind2 = i - 1;
+                break;
+            }
+        }
+
+        // Reset health in 2*k range
+        for (int i = ind2; i >= 0; --i) {
+            if (a[ind2] - a[i] > 2 * k) {
+                break;
+            }
+            h[i] = 0;
+        }
+
+        // Check again after reset
+        prev = 0;
+        for (int i = 0; i < n; ++i) {
+            prev += h[i];
+            if (prev > a[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- > 0) {
+            int n = scanner.nextInt();
+            int k = scanner.nextInt();
+            int[] a = new int[n];
+            int[] h = new int[n];
+            for (int i = 0; i < n; ++i) {
+                a[i] = scanner.nextInt();
+            }
+            for (int i = 0; i < n; ++i) {
+                h[i] = scanner.nextInt();
+            }
+            if (solve(n, k, a, h)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+        scanner.close();
+    }
+}
 
 ```
 
