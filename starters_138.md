@@ -477,7 +477,15 @@ public class Main {
 <summary>Python</summary>
 
 ```python
-
+for _ in range(int(input())):
+    a = int(input())
+    if a == 2:
+        print(2*a,end = ' ')
+        print(4*a)
+        continue
+    print(2*a,end = ' ')
+    print(a**2)
+    
 ```
 
 </details>
@@ -486,6 +494,23 @@ public class Main {
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int a;
+        cin >> a;
+        if (a == 2) {
+            cout << 2 * a << " " << 4 * a << endl;
+            continue;
+        }
+        cout << 2 * a << " " << a * a << endl;
+    }
+    return 0;
+}
 
 ```
 
@@ -495,6 +520,25 @@ public class Main {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- > 0) {
+            int a = scanner.nextInt();
+            if (a == 2) {
+                System.out.print(2 * a + " " + 4 * a);
+                System.out.println();
+                continue;
+            }
+            System.out.print(2 * a + " " + a * a);
+            System.out.println();
+        }
+        scanner.close();
+    }
+}
 
 ```
 
