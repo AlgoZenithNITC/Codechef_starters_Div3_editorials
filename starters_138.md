@@ -201,7 +201,18 @@ public class Main {
 <summary>Python</summary>
 
 ```python
-
+for _ in range(int(input())):
+    n = int(input())
+    l = []
+    if n==1:
+        print('1')
+        continue
+        
+    for i in range(n-2):
+        l.append(3)
+    l.append(2)
+    l.append(1)
+    print(*l)
 ```
 
 </details>
@@ -210,6 +221,33 @@ public class Main {
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        if (n == 1) {
+            cout << "1" << endl;
+            continue;
+        }
+
+        vector<int> l(n-2, 3);
+        l.push_back(2);
+        l.push_back(1);
+
+        for (int i = 0; i < l.size(); ++i) {
+            if (i > 0) cout << " ";
+            cout << l[i];
+        }
+        cout << endl;
+    }
+    return 0;
+}
 
 ```
 
@@ -219,6 +257,36 @@ public class Main {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- > 0) {
+            int n = scanner.nextInt();
+            if (n == 1) {
+                System.out.println("1");
+                continue;
+            }
+
+            ArrayList<Integer> l = new ArrayList<>();
+            for (int i = 0; i < n - 2; i++) {
+                l.add(3);
+            }
+            l.add(2);
+            l.add(1);
+
+            for (int i = 0; i < l.size(); i++) {
+                if (i > 0) System.out.print(" ");
+                System.out.print(l.get(i));
+            }
+            System.out.println();
+        }
+        scanner.close();
+    }
+}
 
 ```
 
