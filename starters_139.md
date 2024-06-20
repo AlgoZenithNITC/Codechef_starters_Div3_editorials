@@ -70,13 +70,38 @@ public class Main {
 
 </details>
 
-## Question - 2
+## 2. Maximum Distance Permutations
 
 <details>
 <summary>Python</summary>
 
 ```python
+def solve():
+  """
+  Prints a sequence of numbers in a specific order.
+  """
+  n = int(input())
 
+  # Print first half in ascending order
+  for i in range(n):
+    print(i + 1, end=" ")
+  print()
+
+  # Print second half in descending order (starting from n/2)
+  for i in range(n // 2, n):
+    print(i + 1, end=" ")
+  print()
+
+  # Print first half again in ascending order
+  for i in range(n // 2):
+    print(i + 1, end=" ")
+  print()
+
+if __name__ == "__main__":
+  test_cases = int(input())
+
+  for _ in range(test_cases):
+    solve()
 ```
 
 </details>
@@ -85,7 +110,49 @@ public class Main {
 <summary>Cpp</summary>
 
 ```cpp
+#include <bits/stdc++.h>
+using namespace std;
 
+/**
+ * @brief helper function to solve
+ *        an individual test case
+ */
+void solve() {
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cout << i + 1 << " ";
+    }
+    cout << endl;
+    
+    for (int i = n / 2; i < n; i++) {
+        cout << i + 1 << " ";
+    }
+    
+    for (int i = 0; i < n / 2; i++) {
+        cout << i + 1 << " ";
+    }
+    cout << endl;
+}
+
+/**
+ * @brief Driver Code
+ * 
+ * @return int 
+ */
+int main() {
+	// your code goes here
+
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        solve();
+    }
+    
+    return 0;
+}
 ```
 
 </details>
@@ -94,7 +161,42 @@ public class Main {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
 
+public class SequencePrinter {
+
+    public static void solve() {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        // Print first half in ascending order
+        for (int i = 0; i < n; i++) {
+            System.out.print(i + 1 + " ");
+        }
+        System.out.println();
+
+        // Print second half in descending order (starting from n/2)
+        for (int i = n / 2; i < n; i++) {
+            System.out.print(i + 1 + " ");
+        }
+        System.out.println();
+
+        // Print first half again in ascending order
+        for (int i = 0; i < n / 2; i++) {
+            System.out.print(i + 1 + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int testCases = scanner.nextInt();
+
+        while (testCases-- > 0) {
+            solve();
+        }
+    }
+};
 ```
 
 </details>
