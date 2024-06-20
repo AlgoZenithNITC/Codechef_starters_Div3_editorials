@@ -99,13 +99,46 @@ public class Main {
 
 </details>
 
-## Question - 3
+## 3. Sum of N
 
 <details>
 <summary>Python</summary>
 
 ```python
+import math
 
+def sieve(n):
+    isprime = [True]*(n+1)
+    isprime[0] = isprime[1] = False
+    for i in range(2,math.isqrt(n)+1):
+        if isprime[i]:
+            for j in range(i*i,n+1,i):
+                isprime[j] = False
+    return isprime
+    
+isprime = sieve(10**6+1)
+total = 0
+primeprefix = [0]*(10**6+1)
+
+for i in range(2,10**6+1):
+    if isprime[i]:
+        total+=i
+    primeprefix[i] = total
+
+        
+for _ in range(int(input())):
+    k = int(input())
+    if isprime[k]:
+        print(primeprefix[k]*k)
+        continue
+    ans = 0
+    for i in range(2,math.isqrt(k)+1):
+        if isprime[i]:
+            ans+=i
+        if k%i == 0:
+            break
+    print(ans*k)
+    
 ```
 
 </details>
@@ -114,6 +147,59 @@ public class Main {
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+vector<bool> sieve(int n) {
+    vector<bool> isprime(n + 1, true);
+    isprime[0] = isprime[1] = false;
+    for (int i = 2; i * i <= n; ++i) {
+        if (isprime[i]) {
+            for (int j = i * i; j <= n; j += i) {
+                isprime[j] = false;
+            }
+        }
+    }
+    return isprime;
+}
+
+int main() {
+    int limit = 1000000;
+    vector<bool> isprime = sieve(limit + 1);
+    vector<long long> primeprefix(limit + 1, 0);
+    long long total = 0;
+
+    for (int i = 2; i <= limit; ++i) {
+        if (isprime[i]) {
+            total += i;
+        }
+        primeprefix[i] = total;
+    }
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int k;
+        cin >> k;
+        if (isprime[k]) {
+            cout << primeprefix[k] * k << endl;
+            continue;
+        }
+        long long ans = 0;
+        for (int i = 2; i * i <= k; ++i) {
+            if (isprime[i]) {
+                ans += i;
+            }
+            if (k % i == 0) {
+                break;
+            }
+        }
+        cout << ans * k << endl;
+    }
+    return 0;
+}
 
 ```
 
@@ -123,6 +209,60 @@ public class Main {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+
+public class Main {
+
+    public static boolean[] sieve(int n) {
+        boolean[] isprime = new boolean[n + 1];
+        for (int i = 0; i <= n; i++) {
+            isprime[i] = true;
+        }
+        isprime[0] = isprime[1] = false;
+        for (int i = 2; i * i <= n; i++) {
+            if (isprime[i]) {
+                for (int j = i * i; j <= n; j += i) {
+                    isprime[j] = false;
+                }
+            }
+        }
+        return isprime;
+    }
+
+    public static void main(String[] args) {
+        int limit = 1000000;
+        boolean[] isprime = sieve(limit + 1);
+        long[] primeprefix = new long[limit + 1];
+        long total = 0;
+
+        for (int i = 2; i <= limit; i++) {
+            if (isprime[i]) {
+                total += i;
+            }
+            primeprefix[i] = total;
+        }
+
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int k = sc.nextInt();
+            if (isprime[k]) {
+                System.out.println(primeprefix[k] * k);
+                continue;
+            }
+            long ans = 0;
+            for (int i = 2; i * i <= k; i++) {
+                if (isprime[i]) {
+                    ans += i;
+                }
+                if (k % i == 0) {
+                    break;
+                }
+            }
+            System.out.println(ans * k);
+        }
+    }
+}
 
 ```
 
