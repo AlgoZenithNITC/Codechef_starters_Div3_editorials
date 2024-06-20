@@ -483,31 +483,4 @@ public class SplitArray {
 
 </details>
 
-## Question - 5
 
-<details>
-<summary>Python</summary>
-
-```python
-
-```
-
-</details>
-
-<details>
-<summary>Cpp</summary>
-
-```cpp
-
-```
-
-</details>
-
-<details>
-<summary>Java</summary>
-
-```java
-
-```
-
-</details>
