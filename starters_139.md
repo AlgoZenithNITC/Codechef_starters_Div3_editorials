@@ -370,13 +370,22 @@ public class Main {
 
 </details>
 
-## Question - 4
+## 4. Destroying Bridges Part 2
 
 <details>
 <summary>Python</summary>
 
 ```python
-
+for _ in range(int(input())):
+    n, c = map(int, input().split())
+    a = list(map(int, input().split()))
+    a[1:] = sorted(a[1:])[::-1]
+    ans = n
+    for i in range(n-1):
+        c1 = sum(a[:i+1])
+        c2 = sum(a[i+1:])
+        if c1*c2 <= c: ans = min(ans, i+1)
+    print(ans)
 ```
 
 </details>
@@ -385,7 +394,41 @@ public class Main {
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+
+    for (int _ = 0; _ < t; _++) {
+    int n, c;
+    cin >> n >> c;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    // Sort remaining elements (from index 1) in descending order
+    sort(a.begin() + 1, a.end(), greater<int>());
+
+    int ans = n;
+    for (int i = 0; i < n - 1; i++) {
+        int c1 = accumulate(a.begin(), a.begin() + i + 1, 0); // Sum of first i+1 elements
+        int c2 = accumulate(a.begin() + i + 1, a.end(), 0); // Sum of remaining elements
+        if (c1 * c2 <= c) {
+            ans = min(ans, i + 1);
+        }
+    }
+
+    cout << ans << endl;
+
+    return 0;
+}
 ```
 
 </details>
@@ -394,7 +437,48 @@ public class Main {
 <summary>Java</summary>
 
 ```java
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
 
+public class SplitArray {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int t = scanner.nextInt();
+
+        for (int _ = 0; _ < t; _++) {
+            int n = scanner.nextInt();
+            int c = scanner.nextInt();
+
+            ArrayList<Integer> a = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                a.add(scanner.nextInt());
+            }
+
+            // Sort remaining elements (from index 1) in descending order
+            Collections.sort(a.subList(1, a.size()), Collections.reverseOrder());
+
+            int ans = n;
+            for (int i = 0; i < n - 1; i++) {
+                int c1 = 0;
+                for (int j = 0; j <= i; j++) {
+                    c1 += a.get(j);  // Sum of first i+1 elements
+                }
+                int c2 = 0;
+                for (int j = i + 1; j < n; j++) {
+                    c2 += a.get(j);  // Sum of remaining elements
+                }
+                if (c1 * c2 <= c) {
+                    ans = Math.min(ans, i + 1);
+                }
+            }
+
+            System.out.println(ans);
+        }
+    }
+}
 ```
 
 </details>
