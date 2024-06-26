@@ -3,7 +3,7 @@
 <details>
 <summary>Python</summary>
 
-```python
+```Python
 for _ in range(int(input())):
     n = int(input())
     l = []
@@ -22,7 +22,7 @@ for _ in range(int(input())):
 <details>
 <summary>Cpp</summary>
 
-```cpp
+```Cpp
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -59,8 +59,8 @@ int main() {
 <details>
 <summary>Java</summary>
 
-```java
-import java.util.Scanner;
+```Java
+import Java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -94,7 +94,7 @@ public class Main {
 <details>
 <summary>Python</summary>
 
-```python
+```Python
 for _ in range(int(input())):
     n,k = map(int,input().split())
     a = list(map(int,input().split()))
@@ -118,7 +118,7 @@ for _ in range(int(input())):
 <details>
 <summary>Cpp</summary>
 
-```cpp
+```Cpp
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -163,8 +163,8 @@ int main() {
 <details>
 <summary>Java</summary>
 
-```java
-import java.util.Scanner;
+```Java
+import Java.util.Scanner;
 
 public class Solution {
     public static int f(int[] a, int n, int ind, int num) {
@@ -207,7 +207,7 @@ public class Solution {
 <details>
 <summary>Python</summary>
 
-```python
+```Python
 def solve(n):
     x = list(map(int,input().split()))
     p = list(map(int,input().split()))
@@ -248,7 +248,7 @@ for _ in range(int(input())):
 <details>
 <summary>Cpp</summary>
 
-```cpp
+```Cpp
 #include <iostream>
 #include <vector>
 
@@ -317,8 +317,8 @@ int main() {
 <details>
 <summary>Java</summary>
 
-```java
-import java.util.Scanner;
+```Java
+import Java.util.Scanner;
 
 public class Solution {
     public static boolean solve(int n) {
@@ -391,7 +391,7 @@ public class Solution {
 <details>
 <summary>Python</summary>
 
-```python
+```Python
 def solve(n, k):
     a = list(map(int, input().split()))
     h = list(map(int, input().split()))
@@ -447,7 +447,7 @@ for _ in range(int(input())):
 <details>
 <summary>Cpp</summary>
 
-```cpp
+```Cpp
 #include <iostream>
 #include <vector>
 
@@ -535,8 +535,8 @@ int main() {
 <details>
 <summary>Java</summary>
 
-```java
-import java.util.Scanner;
+```Java
+import Java.util.Scanner;
 
 public class Main {
     public static boolean solve(int n, int k, int[] a, int[] h) {
