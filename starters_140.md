@@ -20,7 +20,7 @@ for _ in range(t):
 <details>
 <summary>Cpp</summary>
 
-```cpp
+```Cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -45,8 +45,8 @@ int main() {
 <details>
 <summary>Java</summary>
 
-```java
-import java.util.Scanner;
+```Java
+import Java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -72,7 +72,7 @@ public class Main {
 <details>
 
   <summary>Python</summary>
-  ```python
+  ```Python
   
     def main():
         t = int(input())
@@ -103,7 +103,7 @@ public class Main {
 
 <details>
   <summary>Cpp</summary>
-  ```cpp
+  ```Cpp
   
     #include <bits/stdc++.h>
     using namespace std;
@@ -147,7 +147,7 @@ public class Main {
   <summary>Java</summary>
   ```Java
   
-    import java.util.*;
+    import Java.util.*;
     
     public class Solution {
         public static void main(String[] args) {
@@ -187,7 +187,7 @@ public class Main {
 
 <details>
   <summary>Python</summary>
-  ```python
+  ```Python
   
     import collections
     
@@ -262,9 +262,9 @@ public class Main {
 
 <details>
   <summary>Java</summary>
-  ```java
+  ```Java
   
-    import java.util.*;
+    import Java.util.*;
     
     public class Main {
         public static void main(String[] args) {
@@ -309,7 +309,7 @@ public class Main {
 
 <details>
   <summary>Python</summary>
-  ```python
+  ```Python
 
     import sys
   
@@ -331,7 +331,7 @@ public class Main {
 
 <details>
   <summary>Cpp</summary>
-  ```cpp
+  ```Cpp
 
     #include <bits/stdc++.h>
     
@@ -365,9 +365,9 @@ public class Main {
 
 <details>
   <summary>Java</summary>
-  ```java
+  ```Java
 
-    import java.util.Scanner;
+    import Java.util.Scanner;
     
     public class Solution {
         public static void main(String[] args) {
@@ -396,7 +396,7 @@ public class Main {
 ## 5. Tree Removal
 <details>
   <summary>Python</summary>
-  ```python
+  ```Python
 
     import sys
     from collections import deque
@@ -441,7 +441,7 @@ public class Main {
 
 <details>
   <summary>Cpp</summary>
-  ```cpp
+  ```Cpp
 
     #include <bits/stdc++.h>
     using namespace std;
@@ -503,9 +503,9 @@ public class Main {
 
 <details>
   <summary>Java</summary>
-  ```java
+  ```Java
 
-    import java.util.*;
+    import Java.util.*;
     
     public class Main {
         public static void main(String[] args) {
