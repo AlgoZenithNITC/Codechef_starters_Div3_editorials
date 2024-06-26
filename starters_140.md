@@ -71,9 +71,9 @@ public class Main {
 
 <details>
 <summary>Python</summary>
+	
 ```Python
-  
-    def main():
+	def main():
         t = int(input())
         while t > 0:
             n = int(input())
@@ -97,7 +97,7 @@ public class Main {
     if __name__ == "__main__":
         main()
 
-    ```
+```
 </details>
 
 <details>
