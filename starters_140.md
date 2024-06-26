@@ -71,8 +71,8 @@ public class Main {
 
 <details>
 
-  <summary>Python</summary>
-  ```Python
+<summary>Python</summary>
+```Python
   
     def main():
         t = int(input())
@@ -102,8 +102,8 @@ public class Main {
 </details>
 
 <details>
-  <summary>Cpp</summary>
-  ```Cpp
+<summary>Cpp</summary>
+```Cpp
   
     #include <bits/stdc++.h>
     using namespace std;
@@ -144,8 +144,8 @@ public class Main {
 </details>
 
 <details>
-  <summary>Java</summary>
-  ```Java
+<summary>Java</summary>
+```Java
   
     import Java.util.*;
     
@@ -186,8 +186,8 @@ public class Main {
 ## 3. Trick Or Treat
 
 <details>
-  <summary>Python</summary>
-  ```Python
+<summary>Python</summary>
+```Python
   
     import collections
     
@@ -218,8 +218,8 @@ public class Main {
 </details>
 
 <details>
-  <summary>Cpp</summary>
-  ```Cpp
+<summary>Cpp</summary>
+```Cpp
   
     #include <bits/stdc++.h>
     using namespace std;
@@ -261,8 +261,8 @@ public class Main {
 </details>
 
 <details>
-  <summary>Java</summary>
-  ```Java
+<summary>Java</summary>
+```Java
   
     import Java.util.*;
     
@@ -308,8 +308,8 @@ public class Main {
 ## 4. Split Permutation
 
 <details>
-  <summary>Python</summary>
-  ```Python
+<summary>Python</summary>
+```Python
 
     import sys
   
@@ -330,8 +330,8 @@ public class Main {
 </details>
 
 <details>
-  <summary>Cpp</summary>
-  ```Cpp
+<summary>Cpp</summary>
+```Cpp
 
     #include <bits/stdc++.h>
     
@@ -364,8 +364,8 @@ public class Main {
 </details>
 
 <details>
-  <summary>Java</summary>
-  ```Java
+<summary>Java</summary>
+```Java
 
     import Java.util.Scanner;
     
@@ -395,8 +395,8 @@ public class Main {
 
 ## 5. Tree Removal
 <details>
-  <summary>Python</summary>
-  ```Python
+<summary>Python</summary>
+```Python
 
     import sys
     from collections import deque
@@ -440,8 +440,8 @@ public class Main {
 </details>
 
 <details>
-  <summary>Cpp</summary>
-  ```Cpp
+<summary>Cpp</summary>
+```Cpp
 
     #include <bits/stdc++.h>
     using namespace std;
@@ -502,8 +502,8 @@ public class Main {
 </details>
 
 <details>
-  <summary>Java</summary>
-  ```Java
+<summary>Java</summary>
+```Java
 
     import Java.util.*;
     
