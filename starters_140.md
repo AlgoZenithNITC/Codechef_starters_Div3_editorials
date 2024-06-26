@@ -70,7 +70,6 @@ public class Main {
 ## 2. Make Permutation
 
 <details>
-
 <summary>Python</summary>
 ```Python
   
