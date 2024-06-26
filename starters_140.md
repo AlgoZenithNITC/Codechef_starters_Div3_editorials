@@ -67,7 +67,7 @@ public class Main {
 
 </details>
 
-## Make Permutation
+## 2. Make Permutation
 
 <details>
 
@@ -183,7 +183,7 @@ public class Main {
 
 </details>
 
-## Trick Or Treat
+## 3. Trick Or Treat
 
 <details>
   <summary>Python</summary>
@@ -305,7 +305,7 @@ public class Main {
     ```
 </details>
 
-## Split Permutation
+## 4. Split Permutation
 
 <details>
   <summary>Python</summary>
@@ -393,7 +393,7 @@ public class Main {
     ```
 </details>
 
-## Tree Removal
+## 5. Tree Removal
 <details>
   <summary>Python</summary>
   ```python
