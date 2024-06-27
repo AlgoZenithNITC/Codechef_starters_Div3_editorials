@@ -1,4 +1,4 @@
-## 1. Yoga Class
+## 1. Yoga Day
 
 <details>
 <summary>Python</summary>
