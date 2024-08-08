@@ -398,5 +398,94 @@ public class Main {
 }
 
 ```
+## 4. Permutation Construction
+
+<details>
+<summary>Python</summary>
+
+```python
+def main():
+    t = int(input())
+    
+    for _ in range(t):
+        n = int(input())
+        i = 1
+        j = (n + 3) // 2
+        
+        while i < ((n + 3) // 2) or j <= n:
+            if i < ((n + 3) // 2):
+                print(i, end=" ")
+                i += 1
+            if j <= n:
+                print(j, end=" ")
+                j += 1
+        print()
+
+if __name__ == "__main__":
+    main()
+
+```
+
+</details>
+
+<details>
+<summary>Cpp</summary>
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        int i=1;
+        int j = (n+3)/2;
+        while(i<((n+3)/2) || j<=n){
+            if(i<(n+3)/2) cout<<i++<<" ";
+            if(j<=n) cout<<j++<<" ";
+        }
+        cout<<endl;
+    }
+}
+```
+
+</details>
+
+<details>
+<summary>Java</summary>
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        
+        while (t-- > 0) {
+            int n = scanner.nextInt();
+            int i = 1;
+            int j = (n + 3) / 2;
+            
+            while (i < ((n + 3) / 2) || j <= n) {
+                if (i < ((n + 3) / 2)) {
+                    System.out.print(i++ + " ");
+                }
+                if (j <= n) {
+                    System.out.print(j++ + " ");
+                }
+            }
+            System.out.println();
+        }
+        
+        scanner.close();
+    }
+}
+
+```
 
 </details>
