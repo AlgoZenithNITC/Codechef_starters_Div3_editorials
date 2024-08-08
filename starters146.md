@@ -398,6 +398,7 @@ public class Main {
 }
 
 ```
+</details>
 ## 4. Permutation Construction
 
 <details>
