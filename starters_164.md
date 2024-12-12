@@ -1,4 +1,4 @@
-## Itz Simple
+## 1. Itz Simple
 
 <details>
 <summary>Python</summary>
@@ -113,13 +113,19 @@ public class Main {
 
 </details>
 
-## Question - 2
-
+## 2. Swap and Flip
 <details>
 <summary>Python</summary>
 
 ```python
-
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    t = input()
+    
+    zs, zt = s.count('0'), t.count('0')
+    if zs%2 == zt%2: print('Yes')
+    else: print('No')
 ```
 
 </details>
@@ -128,7 +134,37 @@ public class Main {
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+#include <string>
+using namespace std;
 
+int main() {
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int n;
+        cin >> n;
+        string s, t;
+        cin >> s >> t;
+
+        int zs = 0, zt = 0;
+        for (char c : s) {
+            if (c == '0') zs++;
+        }
+        for (char c : t) {
+            if (c == '0') zt++;
+        }
+
+        if (zs % 2 == zt % 2) {
+            cout << "Yes" << endl;
+        } else {
+            cout << "No" << endl;
+        }
+    }
+
+    return 0;
+}
 ```
 
 </details>
@@ -137,18 +173,70 @@ public class Main {
 <summary>Java</summary>
 
 ```java
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 
+class Codechef
+{
+    public static void main (String[] args) throws java.lang.Exception
+    {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+
+        while (T-- > 0) {
+            int n = sc.nextInt();
+            String s = sc.next();
+            String t = sc.next();
+
+            int zs = 0, zt = 0;
+            for (char c : s.toCharArray()) {
+                if (c == '0') zs++;
+            }
+            for (char c : t.toCharArray()) {
+                if (c == '0') zt++;
+            }
+
+            if (zs % 2 == zt % 2) {
+                System.out.println("Yes");
+            } else {
+                System.out.println("No");
+            }
+        }
+        sc.close();
+    }
+}
 ```
 
 </details>
 
-## Question - 3
+## 3. Construct Permutation
 
 <details>
 <summary>Python</summary>
 
 ```python
+def solve():
+    n = int(input())
+    if n % 2 == 0:
+        print(-1)
+        return
 
+    p1 = n
+    p2 = 2
+
+    for i in range(1, n + 1):
+        if i % 2 == 1:
+            print(p1, end=" ")
+            p1 -= 2
+        else:
+            print(p2, end=" ")
+            p2 += 2
+    print()
+
+t = int(input())
+for _ in range(t):
+    solve()
 ```
 
 </details>
@@ -157,7 +245,45 @@ public class Main {
 <summary>Cpp</summary>
 
 ```cpp
+#include <iostream>
+using namespace std;
 
+void Solve() 
+{
+    int n;
+    cin >> n;
+
+    if (n % 2 == 0) {
+        cout << -1 << "\n";
+        return;
+    }
+
+    int p1 = n;
+    int p2 = 2;
+
+    for (int i = 1; i <= n; i++) {
+        if (i % 2 == 1) {
+            cout << p1 << " ";
+            p1 -= 2;
+        } else {
+            cout << p2 << " ";
+            p2 += 2;
+        }
+    }
+    cout << "\n";
+}
+
+int main() 
+{
+    int t;
+    cin >> t;
+
+    for (int i = 0; i < t; i++) {
+        Solve();
+    }
+
+    return 0;
+}
 ```
 
 </details>
@@ -166,12 +292,39 @@ public class Main {
 <summary>Java</summary>
 
 ```java
+import java.util.*;
+import java.io.*;
 
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int testCases = scanner.nextInt();
+        
+        while (testCases-- > 0) {
+            int n = scanner.nextInt();
+            
+            if (n % 2 == 0) {
+                System.out.println(-1);
+                continue;
+            }
+            
+            for (int i = 1; i <= n; i++) {
+                if (i % 2 == 0) {
+                    System.out.print(n - i + 1 + " ");
+                } else {
+                    System.out.print(i + " ");
+                }
+            }
+            System.out.println();
+        }
+        scanner.close();
+    }
+}
 ```
 
 </details>
 
-## Halloween Array
+## 4. Halloween Array
 
 <details>
 <summary>Python</summary>
