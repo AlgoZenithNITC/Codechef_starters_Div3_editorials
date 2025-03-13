@@ -397,7 +397,7 @@ for _ in range(int(input())):
         ans.append([1,start+1,n])
     print(len(ans))
     for i in ans:
-        print(\*i)
+        print(*i)
 
 ```
 
